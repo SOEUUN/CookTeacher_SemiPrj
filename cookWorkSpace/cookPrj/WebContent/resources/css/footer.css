@@ -1,0 +1,16 @@
+footer{
+    bottom: 0;
+    text-align: center;
+    
+}
+
+#ff{
+    display: flex;
+    justify-content: center;
+}
+
+footer div{
+    font-size: 12px;
+    margin: 5px;
+    color: rgb(102, 102, 102);
+}

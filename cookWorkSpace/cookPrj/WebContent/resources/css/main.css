@@ -1,0 +1,125 @@
+/* 메인 슬라이드 */
+main div{
+    /* border: 1px solid ; */
+}
+/* 각자 작업할 때 이거 추가 */
+
+#container{
+    position: absolute;
+    top: 28%;
+    left: 50%;
+    transform: translate(-50%);
+    width: 1050px; 
+    padding-bottom: 50px;
+}
+main{
+
+    overflow: hidden;
+
+}
+#slide-area{
+    position: relative;
+    width: 3150px;
+    height: 400px;
+    transition: 0.8s;
+    margin-top: 15px;
+}
+.slide-items{
+    width: 1050px;
+    height: 100%;
+    float: left; 
+}
+
+#slide-btn-area{
+    transform: translate(46.5%);
+}
+#slide-btn-area>button{
+    width: 20px;
+    height: 5px;
+
+}
+main div{
+    box-sizing: border-box;
+    /* border: 1px solid black; */
+}
+
+/* 메인 이름 폰트 */
+#main-top>div:first-child, #main-middle>div:first-child, #main-bottom>div:first-child{
+    font-size: 2rem;
+    padding: 20px;
+}
+/* 레시피 공간 */
+#main-middle{
+    
+    position: relative;
+    width: 1050px;
+    /* height: 600px; */
+    text-align: center;
+    margin-top: 30px;
+}
+#main-middle>div:first-child{
+    margin-bottom: 15px;
+}
+#main-menu-area{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 500px;
+}
+/* 레시피 이미지 크기 */
+#main-middle>div>div {
+    width: 350px;
+    height: 450px;
+}
+#main-menu-area>div>div{
+    margin-top: 10px;
+}
+
+/* 식재료 공간 */
+#main-bottom{
+    position: relative;
+    width: 1050px;
+    /* height: 750px; */
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
+#main-menu-bar{
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 30px;
+    margin-bottom: 50px;
+}
+/* 식재로 메뉴바 */
+.main-menu-bar-items{
+    width: 120px;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 10px;
+    border-color: #255D00;
+    background-color: #FFD335;
+}
+/* 식재료 이미지들 */
+.main-prod-area>div{
+    width: 200px;
+    height: 200px;
+}
+
+.main-prod-area{
+    display: flex;
+    justify-content: space-around;
+    height: 300px;
+}
+
+.main-prod-area>div>div{
+    margin-top: 10px;
+}
+
+/* 이미지 호버 시 */
+#main-middle img:hover ,#main-bottom img:hover{
+    opacity: 0.6;
+}
+
+.main-menu-bar-items:hover{
+    color: white;
+}
