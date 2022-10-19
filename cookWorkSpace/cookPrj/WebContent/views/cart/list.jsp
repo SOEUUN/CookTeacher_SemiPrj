@@ -1,4 +1,29 @@
+<%@page import="com.kh.cook.cart.CartItemVo"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%
+	List<CartItemVo> cartList = (List<CartItemVo>) request.getAttribute("cartList");
+	
+	int totalPrice = 0;
+	int deliveryFee = 0;
+	int totalCnt = 0;
+	
+	for(int i = 0; i < cartList.size(); i++){
+		
+		String price = cartList.get(i).getPrice();
+		totalPrice += Integer.parseInt(price);
+		
+		String cnt = cartList.get(i).getCnt();
+		totalCnt += Integer.parseInt(cnt);
+	}
+	
+	if(totalPrice <= 50000){
+		deliveryFee = 3000;
+	}
+	
+%>
+
     <!DOCTYPE html>
     <html>
 
@@ -33,38 +58,24 @@
                                 <div id="product-area">
                                     <div class="product-header">상품</div>
                                     <ul>
+                                   		<c:forEach items="${cartList}" var="cartItem">
                                         <li class="product">
                                             <input type="checkbox">
                                             <div class="thumb">
-                                                <img src="../../resources/img/양파.jpg" alt="양파">
+                                                <img src="${cartItem.imgPath}" alt="${cartItem.name}">
                                             </div>
                                             <div class="product-name">
-                                                <a href="#">유기농 양파 1.5kg</a>
+                                                <a href="#">${cartItem.name}</a>
                                             </div>
                                             <div class="count-wrapper">
                                                 <button class="minus"></button>
-                                                <div class="count">1</div>
+                                                <div class="count">${cartItem.cnt}</div>
                                                 <button class="plus"></button>
                                             </div>
-                                            <div class="price">5,990원</div>
+                                            <div class="price">${parseInt(cartItem.price) * parseInt(cartItem.cnt)}원</div>
                                             <button class="remove"></button>
                                         </li>
-                                        <li class="product">
-                                            <input type="checkbox">
-                                            <div class="thumb">
-                                                <img src="../../resources/img/소시지.jpg" alt="소시지">
-                                            </div>
-                                            <div class="product-name">
-                                                <a href="#">[존쿡 델리미트]살라미 스낵 50g</a>
-                                            </div>
-                                            <div class="count-wrapper">
-                                                <button class="minus"></button>
-                                                <div class="count">1</div>
-                                                <button class="plus"></button>
-                                            </div>
-                                            <div class="price">3,290원</div>
-                                            <button class="remove"></button>
-                                        </li>
+                                   		</c:forEach>
                                     </ul>
                                 </div>
                             </div>
@@ -76,16 +87,16 @@
                                 <div class="price-wrapper">
                                     <div class="price">
                                         <div>상품금액</div>
-                                        <div>9,280원</div>
+                                        <div>${totalPrice}원</div>
                                     </div>
                                     <div class="price">
                                         <div>배송비</div>
-                                        <div>3,000원</div>
+                                        <div>${deliveryFee}원</div>
                                     </div>
                                 </div>
                                 <div class="sum">
-                                    <div class="sum-cnt">총 2건</div>
-                                    <div class="sum-amt"><strong>12,280</strong>원</div>
+                                    <div class="sum-cnt">총 ${totalCnt}건</div>
+                                    <div class="sum-amt"><strong>${totalPrice + deliveryFee}</strong>원</div>
                                 </div>
                                 <input type="submit" value="주문하기">
                             </div>
@@ -96,6 +107,11 @@
                 </main>
                 <%@include file="/views/common/footer.jsp" %> 
             </div>
+
+    <script>
+
+        
+    </script>
 
     </body>
 

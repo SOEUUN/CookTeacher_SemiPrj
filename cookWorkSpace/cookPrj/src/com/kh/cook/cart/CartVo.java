@@ -6,7 +6,6 @@ public class CartVo {
 		
 	}
 	
-	
 	public CartVo(String no, String prodNo, String cnt, String paymentYN) {
 		this.no = no;
 		this.prodNo = prodNo;
