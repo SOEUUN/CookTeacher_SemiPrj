@@ -32,6 +32,7 @@ public class CartService {
 		return result;
 	}
 
+	// 장바구니 목록
 	public List<CartItemVo> selectList(String no) {
 		
 		Connection conn = null;
@@ -50,6 +51,7 @@ public class CartService {
 		
 	}
 
+	// 장바구니 삭제
 	public void deleteList(String[] prodNo, String no) {
 		
 		

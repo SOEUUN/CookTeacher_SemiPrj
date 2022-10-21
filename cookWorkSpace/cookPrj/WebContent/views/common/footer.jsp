@@ -3,7 +3,7 @@
 	<footer>
 	    <div>
 	        <a href="">
-	            <img src="/cookTeacher/resources/img/logo.png" alt="로고이미지" width="50px" height="50px">
+	            <img src="/cookTeacher/resources/img/icons/logo.png" alt="로고이미지" width="50px" height="50px">
 	        </a>
 	    </div>
 	    <div id="ff">

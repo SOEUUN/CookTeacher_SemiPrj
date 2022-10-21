@@ -10,7 +10,6 @@
 	int totalCnt = 0;
 	
 	for(int i = 0; i < cartList.size(); i++){
-		
 		String price = cartList.get(i).getPrice();
 		totalPrice += Integer.parseInt(price);
 		
@@ -33,7 +32,7 @@
         <!-- 경로 체크 필수 -->
         <link rel="stylesheet" href="/cookTeacher/resources/css/header.css">
         <link rel="stylesheet" href="/cookTeacher/resources/css/footer.css">
-        <link rel="stylesheet" href="../../resources/css/cart/list.css">
+        <link rel="stylesheet" href="../resources/css/cart/list.css">
     </head>
 
     <body>
@@ -45,24 +44,31 @@
                 <main>
                     <div id="cart">
                         <h1>장바구니</h1>
-
+						
                         <div class="cart-container">
                             <div id="cart-wrapper">
 
                                 <div id="cart-header">
                                     <div class="all-btn">
-                                        <input id="all" type="checkbox"><label for="all">전체선택</label>
+                                            <input id="all" type="checkbox"><label for="all">전체선택</label>
+                                        <div class="delete">
+                                            <input type="button" value="삭제하기">
+                                        </div>
                                     </div>
                                 </div>
-
+								
                                 <div id="product-area">
-                                    <div class="product-header">상품</div>
+                                    <div class="product-header"></div>
                                     <ul>
+                                        <c:if test="${empty cartList}">
+                                            <div class="none-cart">
+                                                <p>장바구니에 담긴 상품이 없습니다.</p></div>
+                                        </c:if>
                                    		<c:forEach items="${cartList}" var="cartItem">
                                         <li class="product">
                                             <input type="checkbox">
                                             <div class="thumb">
-                                                <img src="${cartItem.imgPath}" alt="${cartItem.name}">
+                                                <img src="<c:url value="/resources/img/product/"></c:url>${cartItem.imgPath}" alt="${cartItem.name}">
                                             </div>
                                             <div class="product-name">
                                                 <a href="#">${cartItem.name}</a>
@@ -72,27 +78,35 @@
                                                 <div class="count">${cartItem.cnt}</div>
                                                 <button class="plus"></button>
                                             </div>
-                                            <div class="price">${parseInt(cartItem.price) * parseInt(cartItem.cnt)}원</div>
+                                            <div class="price">${Integer.parseInt(cartItem.price) * Integer.parseInt(cartItem.cnt)}원</div>
                                             <button class="remove"></button>
                                         </li>
                                    		</c:forEach>
                                     </ul>
                                 </div>
                             </div>
-
+							
                             <div id="order-price">
                                 <div class="price-pay">
                                     <div>결제예정금액</div>
                                 </div>
+                                <c:set var="totalCnt" value="0" />
                                 <div class="price-wrapper">
                                     <div class="price">
                                         <div>상품금액</div>
-                                        <div>${totalPrice}원</div>
+                                <c:set var="total" value="0"/>
+                              	  <c:set var="total" value="${total+totalPrice}" />
+                                <c:forEach var="totalPrice" items="${cartItem.price}" varStatus="status">
+                                        <div><c:out value="${total}"/>원</div>
+                                </c:forEach>
                                     </div>
+                                    <!-- <c:if test="${totalPrice >= 50000 || totalPrice == 0 }"></c:if> -->
+                                	<c:set var="deliveryFee" value="3000" />
                                     <div class="price">
                                         <div>배송비</div>
                                         <div>${deliveryFee}원</div>
                                     </div>
+                                    
                                 </div>
                                 <div class="sum">
                                     <div class="sum-cnt">총 ${totalCnt}건</div>

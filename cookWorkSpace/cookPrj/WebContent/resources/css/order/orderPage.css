@@ -134,11 +134,11 @@
 }
 
 .minus{
-  background-image: url("../../img/마이너스\ 버튼.svg");
+  background-image: url("../../img/icons/마이너스\ 버튼.svg 버튼.svg");
 }
 
 .plus{
-  background-image: url("../../img/플러스\ 버튼.svg");
+  background-image: url("../../img/icons/플러스\ 버튼.svg 버튼.svg");
 }
 
 .count-wrapper>button{
@@ -156,7 +156,7 @@
   width: 32px;
   height: 32px;
   background-color: transparent;
-  background-image: url("../../img/삭제\ 버튼.svg");
+  background-image: url("../../img/icons/삭제\ 버튼.svg 버튼.svg");
   border: none;
   background-position: center;
   background-size: contain;
@@ -251,20 +251,20 @@
 .account{
   background-position: top;
   background-repeat: no-repeat;
-  background-image: url("../../img/신용카드결제icon.png");
+  background-image: url("../../img/icons/신용카드결제icon.png");
 }
 
 .card{
   background-position: top;
   background-repeat: no-repeat;
-  background-image: url("../../img/신용카드결제icon.png");
+  background-image: url("../../img/icons/신용카드결제icon.png");
 }
 
 .kakaopay{
   background-position: top;
   background-repeat: no-repeat;
   background-size: 80px 66px;
-  background-image: url("../../img/카카오페이icon.svg");
+  background-image: url("../../img/icons/카카오페이icon.svg");
 }
 
 #order-price{

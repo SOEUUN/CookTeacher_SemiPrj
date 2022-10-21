@@ -1,11 +1,14 @@
+@charset "UTF-8";
+
 * {
   box-sizing: border-box;
 }
 
 input[type="checkbox"]{
   margin: 0;
-  width: 24px;
-  height: 24px;
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
 }
 
 #cart{
@@ -23,18 +26,25 @@ input[type="checkbox"]{
 }
 
 #cart-header{
+  width: 800px;
   padding: 12px;
   border-top: 2px solid black;
   border-bottom: 2px solid black;
 }
 
 .all-btn{
-  font-size: 18px;
+  font-size: 16px;
   display: flex;
   align-items: center;
   background-color: transparent;
   border: none;
   vertical-align: middle;
+  justify-content: space-between;
+}
+
+.choose-all>label{
+  vertical-align: top;
+  padding-left: 10px;
 }
 
 .all-btn>input[type="checkbox"]{
@@ -43,10 +53,44 @@ input[type="checkbox"]{
   margin-top: 1px;
 }
 
+.delete>input{
+  background-color: transparent;
+  border: 1px solid rgb(200, 200, 200);
+  cursor: pointer;
+  height: 30px;
+  border-radius: 5px;
+  width: 100px;
+  font-size: 15px;
+  margin-left: 50px;
+}
+
+.delete>input:active{
+  background-color:rgb(200, 200, 200);
+}
+
+#product-area{
+  margin-top: 30px;
+  height: 100%;
+  border: 1px solid gray;
+  border-radius: 15px;
+}
+
 .product-header{
   padding: 16px 0;
   padding-left: 48px;
   font-size: 18px;
+}
+
+.none-cart{
+  background-image: url(../../img/icons/장바구니.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.none-cart>p{
+  text-align: center;
+  padding-top: 150px;
+  color: gray;
 }
 
 .product{
@@ -89,11 +133,11 @@ input[type="checkbox"]{
 }
 
 .minus{
-  background-image: url("../../img/마이너스\ 버튼.svg");
+  background-image: url("../../img/icons/마이너스\ 버튼.svg");
 }
 
 .plus{
-  background-image: url("../../img/플러스\ 버튼.svg");
+  background-image: url("../../img/icons/플러스\ 버튼.svg");
 }
 
 .count-wrapper>button{
@@ -113,7 +157,7 @@ input[type="checkbox"]{
   width: 32px;
   height: 32px;
   background-color: transparent;
-  background-image: url("../../img/삭제\ 버튼.svg");
+  background-image: url("../../img/icons/삭제\ 버튼.svg");
   border: none;
   background-position: center;
   background-size: contain;
@@ -129,7 +173,6 @@ input[type="checkbox"]{
   height: 300px;
   border: 1px solid gray;
   border-radius: 13px;
-  margin-top: 65px;
   margin-left: 30px;
 }
 
@@ -148,7 +191,9 @@ input[type="checkbox"]{
   margin: 0 12px;
 }
 
+
 .price-pay{
+  font-weight: bold;
   margin-top: 5px;
   margin-left: 3px;
   font-size: 18px;
@@ -174,7 +219,7 @@ input[type="checkbox"]{
   font-size: 18px;
 }
 .sum-amt>strong{
-  font-size: 24px;
+  font-size: 22px;
   font-weight: 700;
 }
 
@@ -190,4 +235,5 @@ input[type="checkbox"]{
   margin-top: 20px;
   font-size: 18px;
   font-weight: 500;
+  cursor: pointer;
 }

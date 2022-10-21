@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	String view = (String)request.getAttribute("view");
+%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,8 +13,9 @@
 <link rel="stylesheet" href="/cookTeacher/resources/css/mypage/main.css">
 <link rel="stylesheet" href="/cookTeacher/resources/css/footer.css">
 
-<link rel="stylesheet" href="/cookTeacher/resources/css/mypage/check.css">
+<link rel="stylesheet" href="/cookTeacher/resources/css/member/mypage/check.css">
 <link rel="stylesheet" href="/cookTeacher/resources/css/mypage/modify.css">
+
 </head>
 <body>
 	<%@include file="/views/common/header.jsp" %>
@@ -22,7 +27,7 @@
                     <div id="inner">
                         <ul id="list-menu">
                             <li class="non-clcik">
-                                <a href="">
+                                <a href="/cookTeacher/mypage/member/check">
                                     회원정보
                                 </a>
                             </li>
@@ -60,8 +65,8 @@
                     </h2>
                     <div id="line"></div>
                     <div id="board-container">
-                    	<!-- <%@include file="/views/member/mypage/check.jsp" %> -->
-                        <%@include file="/views/member/mypage/modify.jsp" %> 
+
+                        
                     </div>
                 </div>
             </div>

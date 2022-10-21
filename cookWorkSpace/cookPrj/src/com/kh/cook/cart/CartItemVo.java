@@ -6,7 +6,6 @@ public class CartItemVo {
 		
 	}
 	
-	
 	public CartItemVo(String prodNo, String imgPath, String name, String cnt, String price) {
 		this.prodNo = prodNo;
 		this.imgPath = imgPath;
