@@ -1,0 +1,110 @@
+
+/* 메인 슬라이드 */
+main div{
+    /* border: 1px solid ; */
+}
+/* 각자 작업할 때 이거 추가 */
+
+#container{
+    position: relative;
+    top: 28%;
+    left: 50%;
+    transform: translate(-50%);
+    width: 1050px; 
+    padding-bottom: 50px;
+
+}
+main{
+
+    overflow: hidden;
+
+}
+
+main div{
+    box-sizing: border-box;
+    /* border: 1px solid black; */
+}
+
+/* ====================메인우======================== */
+
+/* 메인 이름 폰트 */
+#recipe-chinese>div:first-child{
+    font-size: 2rem;
+    padding: 50px;
+}
+/* 레시피 공간 */
+#recipe-chinese{
+    
+    position: relative;
+    width: 1050px;
+    /* height: 1000px; */
+    text-align: center;
+    margin-top: 30px;
+}
+
+.recipe-chinese-area{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding-bottom: 60px;
+    margin-top: 30px;
+    /*height: 400px;  */
+}
+/* 레시피 이미지 크기 */
+#recipe-chinese>div>div {
+    margin-top: 30px;
+    width: 330px;
+    height: 240px;
+}
+
+
+.recipe-chinese-area>div>div{
+    margin-top: 10px;
+}
+
+
+
+
+
+/* 이미지 호버 시 */
+#recipe-chinese img:hover{
+    opacity: 0.6;
+}
+
+.recipe-menu-bar-items:hover{
+    color: white;
+}
+
+#resipe{
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 0px;
+}
+
+/* ================================== */
+#gap{
+    margin: 0;
+    padding: 0px;
+
+}
+
+#ment{
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.chinese-name{
+    margin-top: 5px;
+    margin-bottom: 30px;
+}
+
+#ment-detail{
+	display:flex;
+	justify-content:center;
+	width: 330px;/* 이미지 크기랑 같이 가야 함! */
+	height: 30px;
+    font-size: small;
+    color: gray;
+    margin-top:10px;
+    text-align: center; 
+}

@@ -1,0 +1,109 @@
+#container{
+    position: absolute;
+    padding-bottom: 50px;
+    top: 220px;
+    left: 50%;
+    transform: translate(-50%);
+}
+#mypage-wrap div{
+    /* border: 1px solid black; */
+}
+
+#mypage-wrap{
+    position: relative;
+    min-width: 1050px;
+    margin-bottom: 100px;
+}
+
+
+
+
+/* 마이페이지 아래 */
+#mypage-area{
+    display: flex;
+    width: 1050px;
+    padding: 50px 0px 80px;
+    margin: 0px auto;
+    flex-direction: row;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+}
+
+#mypage-left{
+    float: left;
+    width: 200px;
+}
+
+#tit-aticle{
+    padding: 5px 0 35px 1px;
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 35px;
+    color: #333;
+    letter-spacing: -1px;    
+}
+
+#inner{
+    border: 1px solid #f2f2f2;
+    border-bottom: 0;
+}
+#list-menu .non-clcik{
+    border-bottom: 1px solid #f2f2f2;
+}
+
+/* a버튼 클릭시 스크립트 */
+
+#list-menu>.click>a{
+    background-color: rgb(250, 250, 250);
+    color: #255D00;
+    font-weight: 600;
+}
+
+
+#list-menu a:hover{
+    background-color: rgb(250, 250, 250);
+    color: #255D00;
+    font-weight: 600;
+}
+
+#mypage-right{
+    float: right;
+    width: 820px;
+}
+
+
+#list-menu a{
+    display: block;
+    overflow: hidden;
+    padding: 14px 0 16px 20px;
+    background: #fff url("/cookTeacher/resources/img/right-arrow.png") no-repeat 174px 52%;
+    background-size: 6px 11px;
+    font-size: 14px;
+    color: #666;
+    line-height: 20px;
+    letter-spacing: -.3px;
+}
+
+#head-aticle{
+    font-weight: 500;
+    font-size: 24px;
+    color: rgb(51, 51, 51);
+    letter-spacing: -0.5px;
+    line-height: 48px;
+}
+
+#line{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    -webkit-box-align: center;
+    align-items: center;
+    border-bottom: 2px solid rgb(51, 51, 51);
+    margin-top: 28px;
+}
+
+
+#border-container{
+    height: 540px;
+}
+

@@ -1,0 +1,128 @@
+#modify-wrap{
+    width: 820px;
+    margin: 0px auto;
+    padding: 7px 60px 7px 120px;
+}
+
+#modify-wrap{
+    box-sizing: border-box;
+    margin: 0;
+}
+/* 플렉스 */
+.modify-items{
+    display: inline-flex;
+    width: 100%;
+    padding: 10px 20px;
+}
+/* 플렉스 첫번째 박스 */
+.modify-items>div:first-child{
+    width: 139px;
+    padding-top: 12px;
+}
+
+.modify-items label{
+    font-weight: 500;
+    color: rgb(51, 51, 51);
+    line-height: 20px;
+}
+/* 플렉스 두번째 박스 */
+.input-wrap{
+    flex: 1 1 0%;
+}
+
+.input-wrap>div:first-child{
+    position: relative;
+    height: 48px;
+}
+
+.input-wrap input{
+    width: 100%;
+    height: 46px;
+    padding: 0px 11px 1px 15px;
+    border-radius: 4px;
+    border: 1px solid rgb(221, 221, 221);
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.5;
+    color: rgb(51, 51, 51);
+    outline: none;
+    box-sizing: border-box;
+}
+
+.input-wrap p{
+    font-size: 13px;
+    color: rgb(240, 63, 64);
+    padding: 5px;
+    display: none;
+    /* display: block; */
+}
+
+/* 플렉스 세번째 박스 */
+.modify-items>div:last-child{
+    width: 120px;
+    margin-left: 8px;
+}
+
+.modify-items button{
+    display: block;
+    padding: 0px 10px;
+    text-align: center;
+    overflow: hidden;
+    width: 100%;
+    height: 46px;
+    border-radius: 3px;
+    color: #255D00;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid #255D00;
+}
+
+.modify-items span{
+    display: inline-block;
+}
+
+/* 버튼 */
+#btn{
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    margin-top: 20px;
+    padding-top: 40px;
+    border-top: 1px solid rgb(244, 244, 244);
+}
+
+#btn>button{
+    width: 120px;
+    height: 44px;
+    margin: 0px 3px;
+    border-radius: 3px;
+}
+#btn span{
+    display: inline-block;
+    font-weight: 500;
+}
+
+#quit{
+    display: block;
+    padding: 0px 10px;
+    text-align: center;
+    overflow: hidden;
+    width: 100%;
+    height: 52px;
+    border-radius: 3px;
+    color: #255D00;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid #255D00;
+}
+
+#edit{
+    display: block;
+    padding: 0px 10px;
+    text-align: center;
+    overflow: hidden;
+    width: 100%;
+    height: 52px;
+    border-radius: 3px;
+    color: rgb(255, 255, 255);
+    background-color: #255D00;
+    border: 0px none;
+}

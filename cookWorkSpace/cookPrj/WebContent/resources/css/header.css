@@ -4,6 +4,10 @@ div{
     box-sizing: border-box;
 }
 
+button{
+	cursor: pointer;
+}
+
 header{
     width: 1050px;
     height: 200px;
@@ -76,6 +80,13 @@ header{
     border-bottom-right-radius: 10px;
     border-top-right-radius: 10px;
 }
+
+/* 회원 */
+#header-member-area>div:first-child{
+    text-align: center;
+    width: 150px;
+}
+
 
 /* 메뉴바 */
 #header-bottom{

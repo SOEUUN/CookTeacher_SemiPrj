@@ -1,0 +1,197 @@
+
+/* 메인 슬라이드 */
+main div{
+    /* border: 1px solid ; */
+}
+/* 각자 작업할 때 이거 추가 */
+
+#container{
+    position: relative;
+    top: 28%;
+    left: 50%;
+    transform: translate(-50%);
+    width: 1050px; 
+    padding-bottom: 50px;
+
+}
+main{
+
+    overflow: hidden;
+
+    align-self: center;
+}
+
+main div{
+    box-sizing: border-box;
+    /* align-self: center; */
+    /* border: 1px solid black; */
+}
+
+/* ====================메인우======================== */
+
+/* 메인 이름 폰트 */
+#recipe-detail>div:first-child{
+    font-size: 2rem;
+    padding: 50px;
+}
+/* 레시피 공간 */
+#recipe-detail{
+    
+    position: relative;
+    width: 1050px;
+    /* height: 1000px; */
+    text-align: center;
+    margin-top: 30px;
+
+}
+
+
+/* 레시피 이미지 크기 */
+#recipe-detail>div>div {
+    margin-top: 30px;
+    width: 330px;
+    height: 240px;
+}
+
+
+.recipe-detail-area>div>div{
+    margin-top: 10px;
+}
+
+
+
+
+
+/* ================================== */
+#gap{
+    margin-bottom: 10px;
+    padding: 0px;
+
+}
+
+#ment{
+    place-content: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    width: 60vw;
+    margin: auto;
+    font-size: small;
+
+}
+
+
+
+#grid{
+    /* display: grid; */
+    place-items: center;
+    
+}
+
+#en{
+    
+    margin: auto;
+    width: 1000px;
+    height: 180vh;
+    /* border: 1px solid black; */
+    display: grid;
+    grid-template-columns: 2fr 0.5fr 2fr;
+    grid-template-rows: 1fr 7fr 1fr 1fr 7fr;
+    text-align: left;
+    
+}
+
+#en>div{
+    /* border: 1px dashed blue; */
+}
+/* 그리드 , span .. */
+
+#re-btn{
+    padding: auto;
+    font-weight: 700;
+}
+
+#recipe{
+    grid-column: span 3;
+}
+
+#re-img{
+    grid-column: span 2;
+    
+}
+
+
+
+#prod-btn{
+    grid-column: span 3;
+    display: grid;
+    align-items: flex-end;
+}
+
+#btn-title{
+    width: 150px;
+    height: 50px;
+    justify-self: center;
+    margin-bottom: 10px;
+    border-radius: 10ex;
+    border: 0.1px solid #255D00;
+    background-color: #FFD335;
+}
+
+#b-like{
+    width: 40px;
+    height: 40px;
+}
+
+#btn{
+    width: 150px;
+    height: 50px;
+    justify-self: center;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    border-radius: 10ex;
+    border: 0.1px solid #255D00;
+    background-color: #FFD335;
+}
+
+
+#time{
+    grid-column: span 3;
+}
+
+pre{
+    line-height: 1.5rem;
+    overflow: auto;
+}
+
+#time{
+    width: 100%;
+    height: 30px;
+    background-color: blue;
+}
+
+/* ------- 상품 ------- */
+
+#prod-img{
+    grid-column: span 3;
+    display: flex;
+    justify-content: first baseline;
+    flex-wrap: wrap;
+}
+
+.product{
+    width: 200px;
+    height: 150px;
+    text-align: center;
+    margin-left: 18px;
+    margin-right: 18px;
+}
+
+.prod-price{
+    text-align: center;
+}
+
+.prd-all{
+    margin-right: 5px;
+    margin-left: 6.5px;
+}
+

@@ -1,0 +1,143 @@
+
+#container>div{
+    box-sizing: border-box;
+}
+
+#container{
+    position: absolute;
+    padding-bottom: 50px;
+    top: 280px;
+    left: 50%;
+    transform: translate(-50%);
+    
+}
+
+/* 회원가입 */
+#container>div:first-child{
+    margin-bottom: 50px;
+    font-size: 28px;
+    line-height: 35px;
+    font-weight: 500;
+    text-align: center;
+    letter-spacing: -1px;
+    color: rgb(51, 51, 51);
+}
+
+#join-wrap{
+
+    width: 640px;
+    margin: 0px auto;
+    margin-bottom: 50px;
+}
+/* 보더, 필수입력사항 */
+#join-wrap>div:first-child{
+    padding-bottom: 10px;
+    border-bottom: 2px solid rgb(51, 51, 51);
+    font-size: 12px;
+    color: rgb(102, 102, 102);
+    line-height: 17px;
+    text-align: right;
+}
+#join-top{
+    /* margin-left: 20px; */
+    padding: 0px;
+    margin-top: 10px;
+    
+}
+/* 플렉스 */
+.join-items{
+    display: inline-flex;
+    width: 100%;
+    padding: 10px 20px;
+}
+/* 플렉스안의 첫번째 박스 */
+.join-items>div:first-child{
+    width: 139px;
+    padding-top: 12px;
+}
+
+.join-items label{
+    font-weight: 500;
+    color: rgb(51, 51, 51);
+    line-height: 20px;
+}
+
+/* 플렉스 안의 두번째 박스 */
+.join-items .input-area{
+    position: relative;
+    height: 48px;
+    width: 320px;
+    margin-right: 10px;
+}
+
+.join-items .input-area>input{
+    width: 100%;
+    height: 46px;
+    padding: 0px 11px 1px 15px;
+    border-radius: 4px;
+    border: 1px solid rgb(221, 221, 221);
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 1.5;
+    color: rgb(51, 51, 51);
+    outline: none;
+    box-sizing: border-box;
+}
+/* 플렉스 안의 세번째 박스 */
+.join-items>div:last-child{
+    width: 120px;
+    margin-left: 8px;
+}
+
+.join-items>div:last-child>button{
+    display: block;
+    padding: 0px 10px;
+    text-align: center;
+    overflow: hidden;
+    width: 100%;
+    height: 46px;
+    border-radius: 3px;
+    color: #255D00;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid #255D00;
+    cursor: pointer;
+}
+
+
+/* 가입하기 버튼 */
+#join-btn{
+    width: 100%;
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    border-top: 1px solid rgb(247, 247, 247);
+    padding: 40px 0px;
+}
+
+input[type=submit]{
+    display: block;
+    padding: 0px 10px;
+    text-align: center;
+    overflow: hidden;
+    width: 240px;
+    height: 56px;
+    border-radius: 3px;
+    color: rgb(255, 255, 255);
+    background-color: #255D00;
+    border: 0px none; 
+    cursor: pointer;   
+}
+/* 숨겨진 부분 */
+
+.join-items p{
+    font-size: 13px;
+    color: rgb(240, 63, 64);
+    /* display: none; */
+}
+
+/* 중복확인,주소검색 호버 시 */
+.join-items>div>button:hover{
+    background-color: #255D00;
+    color: white;
+}
+

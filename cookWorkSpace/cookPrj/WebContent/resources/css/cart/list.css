@@ -9,13 +9,15 @@ input[type="checkbox"]{
   width: 18px;
   height: 18px;
   cursor: pointer;
+  margin-right: 10px;
 }
 
 #cart{
-  width: 1050px;
-  height: 600px; 
+  width: 1050px; 
   margin: 0 auto;
   margin-top: 30px;
+  /* 푸터 간격 벌리기 */
+  margin-bottom: 100px; 
 }
 
 #cart>h1{
@@ -38,16 +40,15 @@ input[type="checkbox"]{
   align-items: center;
   background-color: transparent;
   border: none;
-  vertical-align: middle;
   justify-content: space-between;
 }
 
-.choose-all>label{
-  vertical-align: top;
-  padding-left: 10px;
-}
+.choose-all{
+  display: flex;
+  align-items: center;
+} 
 
-.all-btn>input[type="checkbox"]{
+.all-btn input[type="checkbox"]{
   margin: 0;
   margin-right: 12px;
   margin-top: 1px;
@@ -70,7 +71,6 @@ input[type="checkbox"]{
 
 #product-area{
   margin-top: 30px;
-  height: 100%;
   border: 1px solid gray;
   border-radius: 15px;
 }
@@ -90,6 +90,7 @@ input[type="checkbox"]{
 .none-cart>p{
   text-align: center;
   padding-top: 150px;
+  margin-bottom: 100px;
   color: gray;
 }
 
@@ -98,6 +99,10 @@ input[type="checkbox"]{
   display: flex;
   align-items: center;
   border-bottom: 1px solid rgb(200, 200, 200);
+}
+
+.product:last-child {
+  border-bottom: none;
 }
 
 .thumb{
@@ -122,14 +127,20 @@ input[type="checkbox"]{
   align-items: center;
   border: 1px solid gray;
   margin-right: 10px;
-  /* margin-left: 50px; */
+  border-radius: 5px;
+  font-size: 14px;
 }
 
 .count-wrapper>*{
-  width: 24px;
+  width: 36px;
   height: 24px;
   text-align: center;
   line-height: 22px;
+}
+
+.count{
+  border-right: 1px solid gray;
+  border-left: 1px solid gray;
 }
 
 .minus{
@@ -145,6 +156,7 @@ input[type="checkbox"]{
   border: none;
   background-position: center;
   background-size: contain;
+  width: 20px;
 }
 
 .price{

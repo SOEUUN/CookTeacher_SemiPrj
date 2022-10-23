@@ -1,0 +1,109 @@
+#container>div{
+    box-sizing: border-box;
+}
+
+#container{
+    position: absolute;
+    padding-bottom: 50px;
+    top: 280px;
+    left: 50%;
+    transform: translate(-50%);
+
+}
+main{
+    min-width: 1050px;
+    margin-bottom: 50px;
+}
+/* 회원가입 글씨 */
+main>div:first-child{
+    margin-bottom: 50px;
+    font-size: 28px;
+    line-height: 35px;
+    font-weight: 500;
+    text-align: center;
+    letter-spacing: -1px;
+    color: rgb(51, 51, 51);
+}
+
+#find-area{
+    max-width: 400px;
+    padding: 0px 10px 6px;
+    margin: auto;
+    position: relative;
+
+}
+/* 이메일 인증 글씨 */
+#find-area>div:first-child{
+    margin: 0px;
+    box-shadow: rgb(221 221 221) 0px -0.5px 0px 0px inset;
+    text-align: center;
+    height: 48px;
+    font-weight: 400;
+    font-size: 16px;
+    color: rgb(102, 102, 102);
+    line-height: 18px;
+}
+
+#find-area>form{
+    padding: 24px 20px;
+}
+
+.find-items{
+    padding-bottom: 12px;
+}
+/* 이름, 이메일 글씨 */
+.find-items>label{
+    display: inline-block;
+    padding: 8px 0px 11px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 19px;
+    color: rgb(51, 51, 51);
+}
+
+/* 인풋 감싸는 디브 */
+.find-items>div{
+    position: relative;
+    height: 48px;
+}
+
+/* 인풋 부분 */
+.find-items input{
+    width: 100%;
+    height: 46px;
+    padding: 0px 11px 1px 15px;
+    border-radius: 4px;
+    border: 1px solid rgb(221, 221, 221);
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.5;
+    color: rgb(51, 51, 51);
+    outline: none;
+    box-sizing: border-box;
+}
+
+/* p태그 */
+div[id^=hidden] {
+    font-size: 13px;
+    color: rgb(240, 63, 64);
+    margin-top: -4px;
+    display: none;
+}
+
+#find-btn{
+    margin-top: 18px;
+}
+
+#find-btn>input{
+    
+    display: block;
+    padding: 0 10px;
+    text-align: center;
+    overflow: hidden;
+    width: 100%;
+    height: 52px;
+    border-radius: 4px;
+    color: #fff;
+    background-color: #255D00;
+    border: 0 none;
+}
