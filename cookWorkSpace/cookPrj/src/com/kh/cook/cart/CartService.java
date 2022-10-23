@@ -30,7 +30,7 @@ public class CartService {
 		}
 		close(conn);
 		return result;
-	}
+	}// addCart
 
 	// 장바구니 목록
 	public List<CartItemVo> selectList(String no) {
@@ -47,16 +47,12 @@ public class CartService {
 		
 		return cartList;
 		
-		
-		
-	}
+	}// selectList
 
 	// 장바구니 삭제
 	public void deleteList(String[] prodNo, String no) {
 		
-		
 		Connection conn = getConnection();
-		
 		
 		for(int i = 0; i < prodNo.length; i++) {
 			int result = dao.deleteOne(conn, no, prodNo[i]);
@@ -67,9 +63,22 @@ public class CartService {
 		
 		return;
 		
+	}// deleteList
+
+	// 장바구니 수량 조절
+	public int changeCnt(String no, String prodNo, String cnt) {
+		
+		Connection conn= getConnection();
+		
+		int result = dao.changeCnt(conn, no, prodNo, cnt);
+		
+		commit(conn);
+		close(conn);
+		
+		return result;
 		
 		
-	}
+	}// changeCnt
 
 	
 }

@@ -1,6 +1,7 @@
 package com.kh.cook.cart;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.kh.cook.cart.CartService;
 import com.kh.cook.member.vo.MemberVo;
 
 @WebServlet(urlPatterns = "/cart/delete")
@@ -34,7 +36,7 @@ public class DeleteCartController extends HttpServlet {
 		String[] prodNo = req.getParameterValues("prodNo");
 		
 		new CartService().deleteList(prodNo, no);
-		
+
 	}
 	
 }

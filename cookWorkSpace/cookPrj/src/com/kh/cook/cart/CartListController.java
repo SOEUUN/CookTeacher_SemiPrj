@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.kh.cook.cart.CartItemVo;
+import com.kh.cook.cart.CartService;
 import com.kh.cook.member.vo.MemberVo;
 
 @WebServlet(urlPatterns = "/cart/list")

@@ -83,6 +83,7 @@ public class CartDao {
 		
 	}
 
+	// 장바구니 제품 한개 삭제하기
 	public int deleteOne(Connection conn, String no, String prodNo) {
 		
 		String sql ="DELETE CART WHERE NO = ? AND PROD_NO = ?";
@@ -96,12 +97,40 @@ public class CartDao {
 			pstmt.setString(1, no);
 			pstmt.setString(2, prodNo);
 			
+			result = pstmt.executeUpdate();
+			
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}finally {
 			close(pstmt);
 		}
 		return result;
+	}
+
+	public int changeCnt(Connection conn, String no, String prodNo, String cnt) {
+		
+		String sql = "UPDATE CART SET CNT = ? WHERE NO = ? AND PROD_NO = ?";
+		
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, cnt);
+			pstmt.setString(2, no);
+			pstmt.setString(3, prodNo);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result;
+		
 	}
 
 }

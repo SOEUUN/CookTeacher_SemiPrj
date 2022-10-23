@@ -2,25 +2,9 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%
 	List<CartItemVo> cartList = (List<CartItemVo>) request.getAttribute("cartList");
-	
-	int totalPrice = 0;
-	int deliveryFee = 0;
-	int totalCnt = 0;
-	
-	for(int i = 0; i < cartList.size(); i++){
-		String price = cartList.get(i).getPrice();
-		totalPrice += Integer.parseInt(price);
-		
-		String cnt = cartList.get(i).getCnt();
-		totalCnt += Integer.parseInt(cnt);
-	}
-	
-	if(totalPrice <= 50000){
-		deliveryFee = 3000;
-	}
-	
 %>
 
     <!DOCTYPE html>
@@ -33,6 +17,7 @@
         <link rel="stylesheet" href="/cookTeacher/resources/css/header.css">
         <link rel="stylesheet" href="/cookTeacher/resources/css/footer.css">
         <link rel="stylesheet" href="../resources/css/cart/list.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     </head>
 
     <body>
@@ -44,15 +29,16 @@
                 <main>
                     <div id="cart">
                         <h1>장바구니</h1>
-						
+
                         <div class="cart-container">
                             <div id="cart-wrapper">
-
                                 <div id="cart-header">
                                     <div class="all-btn">
-                                            <input id="all" type="checkbox"><label for="all">전체선택</label>
+                                        <div class="choose-all">
+                                            <input id="all" type="checkbox" ><label for="all">전체선택</label>
+                                        </div>
                                         <div class="delete">
-                                            <input type="button" value="삭제하기">
+                                            <input type="button" value="삭제하기" onclick="deleteList()">
                                         </div>
                                     </div>
                                 </div>
@@ -66,7 +52,7 @@
                                         </c:if>
                                    		<c:forEach items="${cartList}" var="cartItem">
                                         <li class="product">
-                                            <input type="checkbox">
+                                            <input type="checkbox" value="${cartItem.prodNo}">
                                             <div class="thumb">
                                                 <img src="<c:url value="/resources/img/product/"></c:url>${cartItem.imgPath}" alt="${cartItem.name}">
                                             </div>
@@ -74,59 +60,56 @@
                                                 <a href="#">${cartItem.name}</a>
                                             </div>
                                             <div class="count-wrapper">
-                                                <button class="minus"></button>
+                                                <button class="minus" onclick="changeCnt(${cartItem.prodNo}, -1)"></button>
                                                 <div class="count">${cartItem.cnt}</div>
-                                                <button class="plus"></button>
+                                                <button class="plus" onclick="changeCnt(${cartItem.prodNo}, 1)"></button>
                                             </div>
-                                            <div class="price">${Integer.parseInt(cartItem.price) * Integer.parseInt(cartItem.cnt)}원</div>
-                                            <button class="remove"></button>
+                                            <div class="price"><fmt:formatNumber value="${Integer.parseInt(cartItem.price) * Integer.parseInt(cartItem.cnt)}" pattern="#,###"/>원</div>
+                                            <button class="remove" onclick="deleteOne(${cartItem.prodNo})"></button>
                                         </li>
                                    		</c:forEach>
                                     </ul>
                                 </div>
                             </div>
-							
+
+                            <c:set var="total" value="0" />
+                            <c:set var="totalCnt" value="0"/>
+							<c:forEach var="cartItem" items="${cartList}">
+								<c:set var="total" value="${total + Integer.parseInt(cartItem.price) * Integer.parseInt(cartItem.cnt)}" />
+								<c:set var="totalCnt" value="${totalCnt + 1}"/>
+							</c:forEach>
+
                             <div id="order-price">
                                 <div class="price-pay">
                                     <div>결제예정금액</div>
                                 </div>
-                                <c:set var="totalCnt" value="0" />
                                 <div class="price-wrapper">
                                     <div class="price">
                                         <div>상품금액</div>
-                                <c:set var="total" value="0"/>
-                              	  <c:set var="total" value="${total+totalPrice}" />
-                                <c:forEach var="totalPrice" items="${cartItem.price}" varStatus="status">
-                                        <div><c:out value="${total}"/>원</div>
-                                </c:forEach>
+                                        <div><fmt:formatNumber value="${total}" pattern="#,###"/>원</div>
                                     </div>
-                                    <!-- <c:if test="${totalPrice >= 50000 || totalPrice == 0 }"></c:if> -->
-                                	<c:set var="deliveryFee" value="3000" />
+                                    <c:set var="deliveryFee" value="0" />
+                                    <c:if test="${total <= 50000}">
+	                                	<c:set var="deliveryFee" value="3000" />
+                                    </c:if>
                                     <div class="price">
                                         <div>배송비</div>
-                                        <div>${deliveryFee}원</div>
+                                        <div><fmt:formatNumber value="${deliveryFee}" pattern="#,###"/>원</div>
                                     </div>
-                                    
                                 </div>
                                 <div class="sum">
                                     <div class="sum-cnt">총 ${totalCnt}건</div>
-                                    <div class="sum-amt"><strong>${totalPrice + deliveryFee}</strong>원</div>
+                                    <div class="sum-amt"><strong><fmt:formatNumber value="${total + deliveryFee}" pattern="#,###"/></strong>원</div>
                                 </div>
                                 <input type="submit" value="주문하기">
                             </div>
                         </div>
 
                     </div>
-
                 </main>
                 <%@include file="/views/common/footer.jsp" %> 
             </div>
-
-    <script>
-
-        
-    </script>
-
+    <script src="../resources/js/cart/list.js"></script>        
     </body>
 
     </html>
