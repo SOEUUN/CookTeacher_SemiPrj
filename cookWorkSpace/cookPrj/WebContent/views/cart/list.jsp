@@ -1,10 +1,11 @@
-<%@page import="com.kh.cook.cart.CartItemVo"%>
+<%@page import="com.kh.cook.cart.vo.CartItemVo"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%
 	List<CartItemVo> cartList = (List<CartItemVo>) request.getAttribute("cartList");
+
 %>
 
     <!DOCTYPE html>
@@ -43,8 +44,7 @@
                                     </div>
                                 </div>
 								
-                                <div id="product-area">
-                                    <div class="product-header"></div>
+                                <form id="product-area" onsubmit="cookOrder()" action="/cookTeacher/order/info" method="post">
                                     <ul>
                                         <c:if test="${empty cartList}">
                                             <div class="none-cart">
@@ -52,7 +52,7 @@
                                         </c:if>
                                    		<c:forEach items="${cartList}" var="cartItem">
                                         <li class="product">
-                                            <input type="checkbox" value="${cartItem.prodNo}">
+                                            <input type="checkbox" name="check" value="${cartItem.prodNo}" onchange="cookCheck()">
                                             <div class="thumb">
                                                 <img src="<c:url value="/resources/img/product/"></c:url>${cartItem.imgPath}" alt="${cartItem.name}">
                                             </div>
@@ -60,24 +60,31 @@
                                                 <a href="#">${cartItem.name}</a>
                                             </div>
                                             <div class="count-wrapper">
-                                                <button class="minus" onclick="changeCnt(${cartItem.prodNo}, -1)"></button>
+                                                <button type="button" class="minus" onclick="changeCnt(${cartItem.prodNo}, -1)"></button>
                                                 <div class="count">${cartItem.cnt}</div>
-                                                <button class="plus" onclick="changeCnt(${cartItem.prodNo}, 1)"></button>
+                                                <button type="button" class="plus" onclick="changeCnt(${cartItem.prodNo}, 1)"></button>
                                             </div>
                                             <div class="price"><fmt:formatNumber value="${Integer.parseInt(cartItem.price) * Integer.parseInt(cartItem.cnt)}" pattern="#,###"/>원</div>
-                                            <button class="remove" onclick="deleteOne(${cartItem.prodNo})"></button>
+                                            <button type="button" class="remove" onclick="deleteOne(${cartItem.prodNo})"></button>
                                         </li>
-                                   		</c:forEach>
+                                    </c:forEach>
+                                       <c:set var="total" value="0" />
+			                            <c:set var="totalCnt" value="0"/>
+										<c:forEach var="cartItem" items="${cartList}">
+											<c:set var="total" value="${total + Integer.parseInt(cartItem.price) * Integer.parseInt(cartItem.cnt)}" />
+											<c:set var="totalCnt" value="${totalCnt + 1}"/>
+										</c:forEach>
+	                                    <c:set var="deliveryFee" value="0" />
+	                                    <c:if test="${total <= 30000}">
+		                                	<c:set var="deliveryFee" value="2500" />
+	                                    </c:if>
+                                        <div class="product-footer">
+                                            <span><fmt:formatNumber value="${total}" pattern="#,###"/>원 + 배송비 <fmt:formatNumber value="${deliveryFee}" pattern="#,###"/>원 = <fmt:formatNumber value="${total + deliveryFee}" pattern="#,###"/>원</span>
+                                            <span>(30,000원이상 무료배송)</span>
+                                        </div>
                                     </ul>
-                                </div>
+                                </form>
                             </div>
-
-                            <c:set var="total" value="0" />
-                            <c:set var="totalCnt" value="0"/>
-							<c:forEach var="cartItem" items="${cartList}">
-								<c:set var="total" value="${total + Integer.parseInt(cartItem.price) * Integer.parseInt(cartItem.cnt)}" />
-								<c:set var="totalCnt" value="${totalCnt + 1}"/>
-							</c:forEach>
 
                             <div id="order-price">
                                 <div class="price-pay">
@@ -88,10 +95,6 @@
                                         <div>상품금액</div>
                                         <div><fmt:formatNumber value="${total}" pattern="#,###"/>원</div>
                                     </div>
-                                    <c:set var="deliveryFee" value="0" />
-                                    <c:if test="${total <= 50000}">
-	                                	<c:set var="deliveryFee" value="3000" />
-                                    </c:if>
                                     <div class="price">
                                         <div>배송비</div>
                                         <div><fmt:formatNumber value="${deliveryFee}" pattern="#,###"/>원</div>
@@ -101,7 +104,7 @@
                                     <div class="sum-cnt">총 ${totalCnt}건</div>
                                     <div class="sum-amt"><strong><fmt:formatNumber value="${total + deliveryFee}" pattern="#,###"/></strong>원</div>
                                 </div>
-                                <input type="submit" value="주문하기">
+                                <input type="submit" value="주문하기" form="product-area" id="order">
                             </div>
                         </div>
 
@@ -109,7 +112,10 @@
                 </main>
                 <%@include file="/views/common/footer.jsp" %> 
             </div>
-    <script src="../resources/js/cart/list.js"></script>        
+    <script src="../resources/js/cart/list.js"></script>
+    <script>
+
+    </script>        
     </body>
 
     </html>

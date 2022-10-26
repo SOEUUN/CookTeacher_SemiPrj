@@ -8,10 +8,11 @@
 	
 	String alertMsg = (String)session.getAttribute("alertMsg");
 	session.removeAttribute("alertMsg");
+	
 %>
 	<script>
 		<%if(alertMsg != null) {%>
-			alert('<%=alertMsg%>');
+			Swal.fire('<%=alertMsg%>')
 		<%} %>
 	</script>
 
@@ -67,13 +68,13 @@
                     
                 </div>
                 <div class="header-menu-items">
-                    <a href="">레시피</a>
+                    <a href="<%= root %>/views/menu/recipe_cate.jsp">레시피</a>
                 </div>
                 <div class="header-menu-items">
-                    <a href="">밥이야기</a>
+                    <a href="<%= root %>/bobstory/list">쿡스토리</a>
                 </div>
                 <div class="header-menu-items">
-                    <a href="">고객센터</a>
+                    <a href="<%= root %>/cs/FAQ/list">고객센터</a>
                 </div>
             </div>
         </div>
