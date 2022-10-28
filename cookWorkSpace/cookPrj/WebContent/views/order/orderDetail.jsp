@@ -103,6 +103,14 @@
                                         <dd class="order-dd">30,000원</dd>
                                     </dl>
                                 </div>
+                                <div class="order-right">
+                                    <div class="status">
+                                        <span>배송중</span>
+                                    </div>
+                                        <div class="ask">
+                                            <button class="ask-btn"><span>1:1문의하기</span></button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         

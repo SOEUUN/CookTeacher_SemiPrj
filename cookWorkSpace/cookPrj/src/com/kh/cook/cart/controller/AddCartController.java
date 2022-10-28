@@ -39,7 +39,7 @@ public class AddCartController extends HttpServlet{
 		vo.setProdNo(prodNo);
 		vo.setNo(memberNo);
 		vo.setCnt(cnt);
-		
+
 		// 서비스 다녀오기
 		int result = new CartService().addCart(vo);
 
@@ -49,10 +49,7 @@ public class AddCartController extends HttpServlet{
 		}else {
 			req.setAttribute("errorMsg", "잠시 후 다시 이용해주세요");
 		}
-		
-		
-		
-		
+
 	}
 	
 }

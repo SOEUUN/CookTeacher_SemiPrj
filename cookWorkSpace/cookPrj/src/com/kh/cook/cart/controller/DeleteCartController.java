@@ -36,6 +36,9 @@ public class DeleteCartController extends HttpServlet {
 		String[] prodNo = req.getParameterValues("prodNo");
 		
 		new CartService().deleteList(prodNo, no);
+		
+		PrintWriter writer = resp.getWriter();
+		writer.write(String.join(",",prodNo));
 
 	}
 	

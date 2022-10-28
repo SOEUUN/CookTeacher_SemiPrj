@@ -55,6 +55,7 @@ public class OrderDao {
 		return vo;
 	}
 	
+	// 회원 정보 가져오기
 	public MemberVo selectMemberByNo(Connection conn, String no) {
 		
 		String sql ="SELECT NO, GRADE, EMAIL, NAME, PHONE, ADDR, POINT FROM MEMBER WHERE NO = ?";
@@ -76,7 +77,7 @@ public class OrderDao {
 				String name = rs.getString("NAME");
 				String phone = rs.getString("PHONE");
 				String dataAddr = rs.getString("ADDR");
-				String point = rs.getString("POINT");
+				int point = rs.getInt("POINT");
 				
 				int idx = dataAddr.indexOf(",");
 				
@@ -107,6 +108,7 @@ public class OrderDao {
 		
 	}
 
+	// 주문 내역 만들기
 	public int insertOrder(Connection conn, MemberVo cartMember, String point, int totalPrice, int earn) {
 
 		String sql = "INSERT INTO \"ORDER\" (NO, MEMBER_NO, POINT, USE_POINT, SUM, NAME, ADDR, PHONE) VALUES (SEQ_ORDER_NO.NEXTVAL, ?, ?, ?, ?, ?, ?, ?)";
@@ -135,6 +137,7 @@ public class OrderDao {
 		return result;
 	}
 	
+	// 주문 번호 가져오기
 	public String selectSeq(Connection conn) {
 		
 		String sql ="SELECT SEQ_ORDER_NO.CURRVAL NUM FROM \"ORDER\"";
@@ -161,6 +164,7 @@ public class OrderDao {
 		return num;
 	}
 
+	// 주문내역 넣어주기
 	public int insertOrderDetail(Connection conn, String num, CartItemVo item) {
 
 		String sql = "INSERT INTO ORDER_DETAIL (NO, PROD_NO, ORDER_NO ,CNT , PRICE) VALUES (SEQ_ORDER_DETAIL_NO.NEXTVAL, ?, ?, ?, ?)";
@@ -187,6 +191,29 @@ public class OrderDao {
 		return result;
 		
 		
+	}
+
+	public int insertPayment(Connection conn, String num, String payment) {
+		
+		String sql = "INSERT INTO PAYMENT (PAY_NO, ORDER_NO, PAYMENT) VALUES (SEQ_PAYMENT_PAY_NO.NEXTVAL, ?, ?)";
+		
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, num);
+			pstmt.setString(2, payment);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result;
 	}
 
 

@@ -40,7 +40,7 @@ public class OrderInfoController extends HttpServlet {
 		req.getRequestDispatcher("/views/order/orderInfo.jsp").forward(req, resp);
 		
 	}
-	
+
 }
 /* 배송정보, 포인트 조회 및 사용, 결제수단 선택(무통장, 신용카드, 카카오페이)
  * 1. 회원 정보 가져오기(이름, 전화번호, 주소, 포인트, 회원 등급)
