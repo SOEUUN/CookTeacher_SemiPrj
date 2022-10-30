@@ -115,5 +115,24 @@ public class OrderService {
 		return result;
 		
 	}
+ 
+	public void selectOrderList(String no) {
+
+		Connection conn =  getConnection();
+		
+		
+		
+		/* 주문에 주문번호 / 결제 금액
+		 * 주문내역에 내역번호 / 식재료 번호 / 주문 번호 
+		 * 결제에 결제 수단 / 결제 날짜
+		 * 
+		 * 셀렉트 하려면 식재료 이름 / 주문 번호 / 결제 방법 / 결제 금액
+		 */
+		
+		/* 결제 완료된 상품 하나 조회하기
+		 * 
+		 */
+		
+	}
 
 }

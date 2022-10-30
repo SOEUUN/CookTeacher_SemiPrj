@@ -13,8 +13,6 @@
 <link rel="stylesheet" href="/cookTeacher/resources/css/mypage/main.css">
 <link rel="stylesheet" href="/cookTeacher/resources/css/footer.css">
 
-<link rel="stylesheet" href="/cookTeacher/resources/css/member/mypage/check.css">
-<link rel="stylesheet" href="/cookTeacher/resources/css/mypage/modify.css">
 <link rel="stylesheet" href="../../resources/css/order/orderDetail.css">
 
 </head>
@@ -33,7 +31,7 @@
                                 </a>
                             </li>
                             <li class="non-clcik">
-                                <a href="">
+                                <a href="/cookTeacher/mypage/member/orderDetail">
                                     주문내역
                                 </a>
                             </li>

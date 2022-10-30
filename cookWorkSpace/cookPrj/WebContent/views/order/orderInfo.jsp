@@ -174,9 +174,9 @@
                                 </div>
                                 <div class="payment-wrapper">
                                     <div class="choose-payment">
-                                        <input type="radio" value="무통장입금" class="account" name="payment" checked><span>무통장입금</span>
-                                        <input type="radio" value="신용카드" class="card" name="payment"><span>신용카드</span>
-                                        <input type="radio" value="카카오페이" class="kakaopay" name="payment"><span>카카오페이</span>
+                                        <input type="radio" value="무통장입금" class="account" name="payment" checked><label class="account">무통장입금</label>
+                                        <input type="radio" value="신용카드" class="card" name="payment"><label class="card">신용카드</label>
+                                        <input type="radio" value="카카오페이" class="kakaopay" name="payment"><label class="kakaopay">카카오페이</label>
                                     </div>
                                 </div>
 

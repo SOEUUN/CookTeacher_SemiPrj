@@ -25,7 +25,15 @@ public class CartService {
 		
 		Connection conn = getConnection();
 		
-		int result = dao.addCart(conn, vo);
+		CartVo checkCart = dao.checkCart(conn, vo);
+		int result = 0;
+		
+		if(checkCart != null) {
+			result = dao.updateCnt(conn, vo);
+		}else {
+			
+			result = dao.addCart(conn, vo);
+		}
 		
 		if(result == 1) {
 			commit(conn);

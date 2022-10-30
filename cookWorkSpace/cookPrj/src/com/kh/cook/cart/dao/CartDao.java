@@ -112,6 +112,7 @@ public class CartDao {
 		return result;
 	}
 
+	// 제품 수량 변경
 	public int changeCnt(Connection conn, String no, String prodNo, String cnt) {
 		
 		String sql = "UPDATE CART SET CNT = ? WHERE NO = ? AND PROD_NO = ?";
@@ -136,5 +137,65 @@ public class CartDao {
 		return result;
 		
 	}
+	
+	// 장바구니 중복 체크
+	public CartVo checkCart(Connection conn, CartVo vo) {
+		
+		String sql = "SELECT NO, PROD_NO FROM CART WHERE NO = ? AND PROD_NO = ?";
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		CartVo cv = null;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, vo.getNo());
+			pstmt.setString(2, vo.getProdNo());
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+	
+				cv = new CartVo();
+				
+				cv.setNo(vo.getNo());
+				cv.setProdNo(vo.getProdNo());
+			
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}
+		return cv;
+		
+		
+	}
 
+	// 장바구니 중복 제품 개수 수정
+	public int updateCnt(Connection conn,  CartVo vo) {
+		
+		String sql = "UPDATE CART SET CNT=CNT+? WHERE NO = ? AND PROD_NO = ?";
+		
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, vo.getNo());
+			pstmt.setString(2, vo.getProdNo());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result;
+	}
 }

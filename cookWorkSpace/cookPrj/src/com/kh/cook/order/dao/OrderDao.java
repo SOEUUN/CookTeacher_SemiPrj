@@ -193,6 +193,7 @@ public class OrderDao {
 		
 	}
 
+	// 결제 정보 넣어주기
 	public int insertPayment(Connection conn, String num, String payment) {
 		
 		String sql = "INSERT INTO PAYMENT (PAY_NO, ORDER_NO, PAYMENT) VALUES (SEQ_PAYMENT_PAY_NO.NEXTVAL, ?, ?)";
