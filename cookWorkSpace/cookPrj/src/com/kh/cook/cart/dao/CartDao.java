@@ -90,7 +90,7 @@ public class CartDao {
 	// 장바구니 제품 한개 삭제하기
 	public int deleteOne(Connection conn, String no, String prodNo) {
 		
-		String sql ="DELETE CART WHERE NO = ? AND PROD_NO = ?";
+		String sql ="DELETE CART WHERE NO = ? AND PROD_NO = ? AND PAYMENT_YN = 'N'";
 		
 		PreparedStatement pstmt = null;
 		int result = 0;
@@ -115,7 +115,7 @@ public class CartDao {
 	// 제품 수량 변경
 	public int changeCnt(Connection conn, String no, String prodNo, String cnt) {
 		
-		String sql = "UPDATE CART SET CNT = ? WHERE NO = ? AND PROD_NO = ?";
+		String sql = "UPDATE CART SET CNT = ? WHERE NO = ? AND PROD_NO = ? AND PAYMENT_YN = 'N'";
 		
 		PreparedStatement pstmt = null;
 		int result = 0;
@@ -138,10 +138,10 @@ public class CartDao {
 		
 	}
 	
-	// 장바구니 중복 체크
+	// 장바구니에 있는 상품이 중복 되어 있는지 체크
 	public CartVo checkCart(Connection conn, CartVo vo) {
 		
-		String sql = "SELECT NO, PROD_NO FROM CART WHERE NO = ? AND PROD_NO = ?";
+		String sql = "SELECT NO, PROD_NO, CNT FROM CART WHERE NO = ? AND PROD_NO = ? AND PAYMENT_YN = 'N'";
 		
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -156,11 +156,13 @@ public class CartDao {
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
+				String cnt = rs.getString("CNT");
 	
 				cv = new CartVo();
 				
 				cv.setNo(vo.getNo());
 				cv.setProdNo(vo.getProdNo());
+				cv.setCnt(cnt);
 			
 			}
 			
@@ -178,7 +180,7 @@ public class CartDao {
 	// 장바구니 중복 제품 개수 수정
 	public int updateCnt(Connection conn,  CartVo vo) {
 		
-		String sql = "UPDATE CART SET CNT=CNT+? WHERE NO = ? AND PROD_NO = ?";
+		String sql = "UPDATE CART SET CNT=CNT+? WHERE NO = ? AND PROD_NO = ? AND PAYMENT_YN = 'N'";
 		
 		PreparedStatement pstmt = null;
 		int result = 0;
@@ -186,8 +188,10 @@ public class CartDao {
 		try {
 			pstmt = conn.prepareStatement(sql);
 			
-			pstmt.setString(1, vo.getNo());
-			pstmt.setString(2, vo.getProdNo());
+			pstmt.setString(1, vo.getCnt());
+			pstmt.setString(2, vo.getNo());
+			pstmt.setString(3, vo.getProdNo());
+			
 			
 			result = pstmt.executeUpdate();
 			
@@ -198,4 +202,5 @@ public class CartDao {
 		}
 		return result;
 	}
+	
 }

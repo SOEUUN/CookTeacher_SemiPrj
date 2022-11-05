@@ -21,26 +21,62 @@ public class CartService {
 	private final CartDao dao = new CartDao();
 	
 	// 장바구니 담기
-	public int addCart(CartVo vo) {
+	public int addCart(List<CartVo> list) {
 		
 		Connection conn = getConnection();
 		
-		CartVo checkCart = dao.checkCart(conn, vo);
 		int result = 0;
 		
-		if(checkCart != null) {
-			result = dao.updateCnt(conn, vo);
-		}else {
+		// list의 길이 만큼 반복
+		for(int i = 0; i < list.size(); i++) {
+			// list i번째를 vo 담아주기
+			CartVo vo = list.get(i);
 			
-			result = dao.addCart(conn, vo);
+			// 중복된게 있으면 이쪽으로 돌려줌
+			CartVo checkCart = dao.checkCart(conn, vo);
+			
+			// 상품 하나를 조회해 온다
+			ProductVo pv = new ProductService().selectProductOne(vo.getProdNo());
+			
+			// 중복된 상품이 있으면
+			if(checkCart != null) {
+				
+				// 만약에 담으려는 제품의 수량이 재고 수량보다 적으면 (중복된 상품이 있으면)
+				if(Integer.parseInt(pv.getStock()) >= (Integer.parseInt(checkCart.getCnt()) + Integer.parseInt(vo.getCnt()))) {
+					// 수량 조절을 해서 담아주고
+					result = dao.updateCnt(conn, vo);
+					
+				}
+			}else {
+				
+				// 만약에 담으려는 제품의 수량이 재고 수량보다 적으면 (중복된 상품이 없으면)
+				if(Integer.parseInt(pv.getStock()) >= Integer.parseInt(vo.getCnt())) {
+					
+					// 상품을 카트에 담아준다
+					result = dao.addCart(conn, vo);
+					
+				}
+			}
+			// 실패했으면 롤백
+			if(result == 0) {
+				break;
+			}
+			
+			// 재고 수량이 없으면 롤백
+			if(Integer.parseInt(pv.getStock()) <= 0) {
+				result = -1;
+				break;
+			}
+			
 		}
-		
+
 		if(result == 1) {
 			commit(conn);
 		}else {
 			rollback(conn);
 		}
 		close(conn);
+		
 		return result;
 	}// addCart
 
@@ -53,6 +89,7 @@ public class CartService {
 		// 커넥션 가져오기
 		conn = getConnection();
 		
+		// 한 회원의 장바구니에 담을 정보 셀렉트 해오기
 		cartList = dao.selectList(conn, no);
 		
 		close(conn);
@@ -66,7 +103,9 @@ public class CartService {
 		
 		Connection conn = getConnection();
 		
+		// proNo의 길이까지 돌면서
 		for(int i = 0; i < prodNo.length; i++) {
+			// 제품 하나씩 삭제
 			int result = dao.deleteOne(conn, no, prodNo[i]);
 		}
 		
@@ -82,9 +121,21 @@ public class CartService {
 		
 		Connection conn= getConnection();
 		
-		int result = dao.changeCnt(conn, no, prodNo, cnt);
+		// 식재료 가져오기
+		ProductVo pv = new ProductService().selectProductOne(prodNo);
+		
+		int result = 0;
+		
+		// 재고수량이 상품 수량보다 많으면
+		if(Integer.parseInt(pv.getStock()) >= Integer.parseInt(cnt)) {
+			
+			// 장바구니 수량 조절 해줌(수량 조절 버튼)
+			result = dao.changeCnt(conn, no, prodNo, cnt);
+			
+		}
 		
 		commit(conn);
+		
 		close(conn);
 		
 		return result;

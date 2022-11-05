@@ -32,23 +32,15 @@ public class CartListController extends HttpServlet{
 		// 회원일 경우
 		String no = loginMember.getNo();
 		
+		// 회원의 모든 장바구니 아이템을 불러오기
 		List<CartItemVo> cartList = new CartService().selectList(no);
 		
+		// JSP로 장바구니 리스트를 넘겨준다.
 		req.setAttribute("cartList", cartList);
 		req.getRequestDispatcher("/views/cart/list.jsp").forward(req, resp);
 		
 	}// doGet
 	
-	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
-		HttpSession session = req.getSession();
-		
-		List<CartItemVo> cartInfo = (List<CartItemVo>) req.getAttribute("cartList");
-		
-		session.setAttribute("cartList", cartInfo);
-		
-	}
 	
 	
 }//class

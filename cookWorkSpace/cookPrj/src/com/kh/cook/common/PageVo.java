@@ -1,8 +1,24 @@
 package com.kh.cook.common;
 
 public class PageVo {
-
+	public PageVo() {
+		super();
+	}
 	
+	
+	public PageVo(int listCount, int currentPage, int pageLimit, int boardLimit, int maxPage, int startPage,
+			int endPage, int start, int end) {
+		super();
+		this.listCount = listCount;
+		this.currentPage = currentPage;
+		this.pageLimit = pageLimit;
+		this.boardLimit = boardLimit;
+		this.maxPage = maxPage;
+		this.startPage = startPage;
+		this.endPage = endPage;
+		this.start = start;
+		this.end = end;
+	}
 	private int listCount;
 	private int currentPage;
 	private int pageLimit;
@@ -11,6 +27,10 @@ public class PageVo {
 	private int maxPage;
 	private int startPage;
 	private int endPage;
+	
+	private int start;
+	private int end;
+	
 	public int getListCount() {
 		return listCount;
 	}
@@ -53,26 +73,28 @@ public class PageVo {
 	public void setEndPage(int endPage) {
 		this.endPage = endPage;
 	}
+	
+	public int getStart() {
+		return start;
+	}
+	public void setStart(int start) {
+		this.start = start;
+	}
+	public int getEnd() {
+		return end;
+	}
+	public void setEnd(int end) {
+		this.end = end;
+	}
+
+	
+	
 	@Override
 	public String toString() {
 		return "PageVo [listCount=" + listCount + ", currentPage=" + currentPage + ", pageLimit=" + pageLimit
 				+ ", boardLimit=" + boardLimit + ", maxPage=" + maxPage + ", startPage=" + startPage + ", endPage="
-				+ endPage + "]";
+				+ endPage + ", start=" + start + ", end=" + end + "]";
 	}
-	public PageVo(int listCount, int currentPage, int pageLimit, int boardLimit, int maxPage, int startPage,
-			int endPage) {
-		super();
-		this.listCount = listCount;
-		this.currentPage = currentPage;
-		this.pageLimit = pageLimit;
-		this.boardLimit = boardLimit;
-		this.maxPage = maxPage;
-		this.startPage = startPage;
-		this.endPage = endPage;
-	}
-	public PageVo() {
-		super();
-	}
-	
+
 	
 }

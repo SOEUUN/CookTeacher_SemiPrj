@@ -33,10 +33,15 @@ public class CntCartController extends HttpServlet {
 		
 		// 입력된 식재료를 가져오기
 		String prodNo = req.getParameter("prodNo");
+		// 입력된 수량 가져오기
 		String cnt = req.getParameter("cnt");
 		
+		
 		int result = new CartService().changeCnt(no, prodNo, cnt);
-
+		
+		PrintWriter writer = resp.getWriter();
+		writer.write(""+result);
+		writer.close();
 	}
 	
 	

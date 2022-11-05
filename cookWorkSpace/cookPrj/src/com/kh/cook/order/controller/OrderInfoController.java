@@ -28,13 +28,15 @@ public class OrderInfoController extends HttpServlet {
 		MemberVo loginMember = (MemberVo)session.getAttribute("loginMember");
 		String no = loginMember.getNo();
 		
-		// 장바구니 목록 가져오기
+		// 선택한 상품 목록 가져오기
 		String[] check = req.getParameterValues("check");
 		
-		// 디비 다녀오기
+		// 회원 정보 가져와서
 		MemberVo cartMember = new OrderService().checkCartMember(no, check);
+		// 선택된 상품의 정보를 가져오기
 		List<CartItemVo> cartList = new OrderService().selectCartList(no, check);
 		
+		// JSP로 넘겨주기
 		req.setAttribute("cartMember", cartMember);
 		req.setAttribute("cartList", cartList);
 		req.getRequestDispatcher("/views/order/orderInfo.jsp").forward(req, resp);

@@ -5,20 +5,25 @@ public class OrderDetailVo {
 	public OrderDetailVo() {
 	
 	}
-	
-	public OrderDetailVo(String no, String prod_no, String order_no, String cnt, String price) {
+
+	public OrderDetailVo(String no, String prodNo, String orderNo, String cnt, String price, String name,
+			String imgPath) {
 		this.no = no;
-		this.prod_no = prod_no;
-		this.order_no = order_no;
+		this.prodNo = prodNo;
+		this.orderNo = orderNo;
 		this.cnt = cnt;
 		this.price = price;
+		this.name = name;
+		this.imgPath = imgPath;
 	}
 
 	private String no;
-	private String prod_no;
-	private String order_no;
+	private String prodNo;
+	private String orderNo;
 	private String cnt;
 	private String price;
+	private String name;
+	private String imgPath;
 	
 	public String getNo() {
 		return no;
@@ -28,20 +33,20 @@ public class OrderDetailVo {
 		this.no = no;
 	}
 
-	public String getProd_no() {
-		return prod_no;
+	public String getProdNo() {
+		return prodNo;
 	}
 
-	public void setProd_no(String prod_no) {
-		this.prod_no = prod_no;
+	public void setProdNo(String prodNo) {
+		this.prodNo = prodNo;
 	}
 
-	public String getOrder_no() {
-		return order_no;
+	public String getOrderNo() {
+		return orderNo;
 	}
 
-	public void setOrder_no(String order_no) {
-		this.order_no = order_no;
+	public void setOrderNo(String orderNo) {
+		this.orderNo = orderNo;
 	}
 
 	public String getCnt() {
@@ -60,10 +65,28 @@ public class OrderDetailVo {
 		this.price = price;
 	}
 
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getImgPath() {
+		return imgPath;
+	}
+
+	public void setImgPath(String imgPath) {
+		this.imgPath = imgPath;
+	}
+
 	@Override
 	public String toString() {
-		return "oderDetailVo [no=" + no + ", prod_no=" + prod_no + ", order_no=" + order_no + ", cnt=" + cnt
-				+ ", price=" + price + "]";
+		return "OrderDetailVo [no=" + no + ", prodNo=" + prodNo + ", orderNo=" + orderNo + ", cnt=" + cnt + ", price="
+				+ price + ", name=" + name + ", imgPath=" + imgPath + "]";
 	}
+
+	
 	
 }

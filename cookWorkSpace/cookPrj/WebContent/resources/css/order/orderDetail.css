@@ -1,0 +1,203 @@
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap');
+
+*{
+  font-family: 'Gowun Dodum', sans-serif !important ;
+}
+
+#list-menu>li:nth-child(2)>a {
+  background-color: rgb(250, 250, 250);
+  color: #255D00;
+  font-weight: 600;
+}
+
+.header{
+  display: flex;
+  flex-direction: column;
+}
+
+.header{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  padding-bottom: 27px;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+}
+
+.order-header{
+  display: flex;
+  width: 100%;
+  align-items: center;
+  padding-bottom: 20px;
+  border-bottom: 2px solid rgb(51, 51, 51);
+}
+
+.orderNo{
+  font-weight: 600;
+  font-size: 18px;
+  color: rgb(51, 51, 51);
+  letter-spacing: -0.43px;
+}
+
+.askQnA{
+  flex: 1 1 0%;
+  text-align: right;
+  margin: 0px 4px;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.askImg{
+  width: 12px;
+  height: 12px;
+  vertical-align: -2.4px;
+}
+
+.board-wrapper{
+  display: flex;
+  align-items: center;
+  margin: 0px 20px;
+  padding: 24px 0px;
+  border-bottom: 1px solid rgb(200, 200, 200);
+}
+
+.board-wrapper:last-child {
+  border-bottom: none;
+}
+
+.thumb{
+  padding-top: 10px;
+  padding-bottom: 10px;
+  width: 100px;
+  height: 120px;
+  margin-right: 20px;
+  cursor: pointer;
+}
+
+.thumb>img{
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.productName{
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  margin-right: 20px;
+}
+
+.productName>a{
+  margin-bottom: 10px;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.price{
+  margin-right: 6px;
+  font-weight: bold;
+  line-height: 1.5;
+}
+
+.shipping{
+  width: 100px;
+}
+
+.cartAdd-btn{
+  background-color: #255D00;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  font-size: 12px;
+  width: 90px;
+  height: 25px;
+}
+
+.cartAdd-btn:hover{
+  background: #FFD335;
+  color: black;
+}
+
+.btn-wrapper{
+  display: flex;
+  justify-content: center;
+  margin: 50px 0px;
+}
+
+.product-cancel{
+  background-color: white;
+  border: 1.5px solid #255D00;
+  width: 187px;
+  height: 60px;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.product-cancel:hover{
+  background: #FFD335;
+  color: black;
+}
+
+.product-cancel:disabled:hover {
+  background: white;
+  color: rgb(200, 200, 200);
+}
+
+.notice{
+  display: block;
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 14px;
+  color: rgb(102, 102, 102);
+}
+
+.payment-header{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
+  padding-bottom: 20px;
+  border-bottom: 2px solid rgb(51, 51, 51);
+}
+
+.payment-header>h3{
+  font-size: 20px;
+}
+
+.list{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.list:first-of-type{
+  padding-top: 25px;
+}
+
+.pay-info{
+  padding-bottom: 24px;
+}
+
+.list:last-of-type{
+  margin-bottom: 60px;
+  border-bottom: 1px solid rgb(244, 244, 244);
+}
+
+.order-info-header{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
+  padding-bottom: 20px;
+  border-bottom: 2px solid rgb(51, 51, 51);
+}
+
+.info-name{
+  min-width: 160px;
+  margin-right: 30px;
+  padding-bottom: 24px;
+}
+
+.info{
+  flex-grow: 1;
+}

@@ -1,0 +1,158 @@
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap');
+
+*{
+  font-family: 'Gowun Dodum', sans-serif !important ;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: #ffffff;
+}
+
+.success {
+  position: relative;
+  margin: 40px auto;
+  width: 400px;
+  height: 350px;
+  background: #fff;
+  border-radius: 2px;
+}
+
+.success::before,
+.success::after {
+  content: '';
+  position: absolute;
+  bottom: 10px;
+  width: 40%;
+  height: 10px;
+  box-shadow: 0 5px 14px rgba(0,0,0,.7);
+  z-index: -1;
+  transition: all .3s ease-in-out;
+}
+
+.success::before {
+  left: 15px;
+  transform: skew(-6deg) rotate(-6deg);
+}
+
+.success::after {
+  right: 15px;
+  transform: skew(6deg) rotate(6deg);
+}
+
+.success:hover::before,
+.success:hover::after {
+  box-shadow: 0 2px 14px rgba(0,0,0,.4);
+}
+
+.success:hover::before {
+  left: 5px;
+}
+
+.success:hover::after {
+  right: 5px;
+}
+
+.success{
+  width: 530px;
+  height: 650px;
+  border: 1px solid rgb(200, 200, 200);
+  border-radius: 3px;
+  margin: 30px auto;
+}
+
+.check-wrapper{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px;
+  margin-right: 15px;
+}
+
+.check-icon{
+  text-align: center;
+  margin-top: 30px;
+}
+
+.check-icon>img{
+  width: 150px;
+}
+
+.order-success{
+  display: flex;
+  flex-direction: column; 
+  text-align: center;
+  margin-left: 30px;
+  line-height: 250%;
+  border-bottom: 1px solid rgb(200, 200, 200);
+  padding-bottom: 30px;
+}
+
+.order-success>h1{
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.order-success>p{
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.order-price{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  font-size: 16px;
+  margin-left: 30px;
+}
+
+.notice{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 450px;
+  font-size: 12px;
+  line-height: 200%;
+  margin-top: 30px;
+  margin-left: 30px;
+  color: rgb(153, 152, 152);
+}
+
+.movePage{
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  margin-top: 30px;
+  width: 250px;
+  font-size: 16px;
+}
+
+.movePage>button{
+  height: 40px;
+  margin-bottom: 10px;
+  border: 1px solid rgb(200, 200, 200);
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.moveHome{
+  background-color: #255D00;
+  color: white;
+}
+
+.moveHome:hover{
+  background: #FFD335;
+  color: black;
+}
+
+.moveDetail{
+  background-color: white;
+}
+
+.moveDetail:hover{
+  background: #FFD335;
+  color: black;
+}
+

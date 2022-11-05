@@ -31,11 +31,12 @@ function deleteList() {
       },
       success: function (x){
         const resultList = JSON.parse(x);
-
         for (let i = 0; i < resultList.length; i++) {
             $(`input[value=`+ resultList[i] +`]`).parent().remove()
         }
-    } 
+        checkEmpty();
+        cookCheck();
+    }
   })
      
   
@@ -53,8 +54,17 @@ function deleteOne(prodNo) {
       success: function (result){
           
         $(`input[value=`+ prodNo +`]`).parent().remove() // 페이지 새로고침
+        checkEmpty();
+        cookCheck();
       }  
   })
+}
+
+function checkEmpty(){
+    if(!document.querySelectorAll('li.product').length){
+        const area = document.querySelector('#product-area>.empty')
+        area.innerHTML = '<div class="none-cart"><p>장바구니에 담긴 상품이 없습니다.</p></div>'
+    }
 }
 
 // 개수 수정
@@ -75,15 +85,19 @@ function changeCnt(prodNo, var_cnt){
               prodNo,
               cnt: changed_cnt // 넘겨줄 데이터
           },
-          success: function(){    // 성공하면 실행할 함수
-            $(`input[value=`+ prodNo +`]`).siblings('.count-wrapper').find('.count').text(changed_cnt)
+          success: function(result){    // 성공하면 실행할 함수
+            console.log(result)
+            if (result != 0) {
+                $(`input[value=`+ prodNo +`]`).siblings('.count-wrapper').find('.count').text(changed_cnt)
+    
+                let itemPrice = $(`input[value=`+ prodNo +`]`).siblings('input[name=itemPrice]').val();
+                let totalPrice = itemPrice * changed_cnt;
+                $(`input[value=`+ prodNo +`]`).siblings('input[name=price]').val(totalPrice)
+                $(`input[value=`+ prodNo +`]`).siblings('.price').find('span').text(totalPrice.toLocaleString());
+    
+                cookCheck();
 
-            let itemPrice = $(`input[value=`+ prodNo +`]`).siblings('input[name=itemPrice]').val();
-            let totalPrice = itemPrice * changed_cnt;
-            $(`input[value=`+ prodNo +`]`).siblings('input[name=price]').val(totalPrice)
-            $(`input[value=`+ prodNo +`]`).siblings('.price').find('span').text(totalPrice.toLocaleString());
-
-            cookCheck();
+            }
           }
       });
   }

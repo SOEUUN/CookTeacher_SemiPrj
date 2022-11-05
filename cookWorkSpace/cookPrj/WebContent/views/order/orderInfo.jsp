@@ -6,18 +6,37 @@
 <% 
     List<CartItemVo> cartList = (List<CartItemVo>) request.getAttribute("cartList");
     MemberVo cartMember = (MemberVo) request.getAttribute("cartMember");
+
+    double rate = 0;
+		
+    // 회원 등급에 따른 적립 포인트
+    switch(cartMember.getGrade()) {
+    
+    case "1": 
+        rate = 0.01;
+        break;
+        
+    case "2":
+        rate = 0.03;
+        break;
+        
+    case "3":
+        rate = 0.05;
+        break;
+    
+    }
 %>
 <!DOCTYPE html>
 <html>
 
 <head>
     <meta charset="UTF-8">
-    <title>Insert title here</title>
+    <title>집밥쿡선생 :: 주문페이지</title>
     <!-- 경로 체크 필수 -->
     <link rel="stylesheet" href="/cookTeacher/resources/css/header.css">
     <link rel="stylesheet" href="/cookTeacher/resources/css/footer.css">
     <link rel="stylesheet" href="../resources/css/order/orderInfo.css">
-    <script src="../resources/js/order/orderInfo.js"></script>
+    <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-round.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 </head>
@@ -49,7 +68,7 @@
                                         <div class="info-list">배송지</div>
                                         <div class="member-info">
                                             <input type="text" id="addr" value="${cartMember.getAddr()}" readonly></input>
-                                            <button class="search" onclick="searchAddr()">주소검색</button>
+                                            <button type="button" class="search" onclick="searchAddr()">주소검색</button>
                                         </div>
                                     </li>
 
@@ -57,7 +76,7 @@
                                         <div class="info-list">상세주소</div>
                                         <div class="member-info">
                                             <input class="member-info" id="detailAddr"
-                                                value="${cartMember.getDetailAddr()}" readonly>
+                                                value="${cartMember.getDetailAddr()}" placeholder="나머지 주소를 입력해주세요." readonly>
                                         </div>
                                     </li>
                                     <li>
@@ -89,7 +108,7 @@
                                         <input type="hidden" name="check"
                                             value="${cartItem.prodNo}">
                                         <div class="thumb">
-                                            <img src="<c:url value="/resources/img/product/" />${cartItem.imgPath}" alt="${cartItem.name}">
+                                            <img src="<c:url value="/upload/img/" />${cartItem.imgPath}" alt="${cartItem.name}">
                                         </div>
                                         <div class="product-name">
                                             <a href="#">${cartItem.name}</a>
@@ -161,25 +180,13 @@
                                             <dd class="total-dd">
                                                 <input type="text" name="save-point"
                                                     class="save-point"
-                                                    placeholder="입력"><button type="button">사용</button>
+                                                    placeholder="입력"><button type="button" onclick="clickPoint()">사용</button>
                                             </dd>
 
                                         </dl>
                                     </div>
 
                                 </div>
-
-                                <div class="payment-method">
-                                    <h1>결제 수단</h1>
-                                </div>
-                                <div class="payment-wrapper">
-                                    <div class="choose-payment">
-                                        <input type="radio" value="무통장입금" class="account" name="payment" checked><label class="account">무통장입금</label>
-                                        <input type="radio" value="신용카드" class="card" name="payment"><label class="card">신용카드</label>
-                                        <input type="radio" value="카카오페이" class="kakaopay" name="payment"><label class="kakaopay">카카오페이</label>
-                                    </div>
-                                </div>
-
                             </div>
 
 
@@ -195,12 +202,22 @@
                                                 pattern="#,###" />원
                                         </div>
                                     </div>
-
+	
                                     <div class="price">
-                                        <div>포인트</div>
-                                        <div>
-                                            ${cartMember.getPoint()}p
+                                        <div>사용 포인트</div>
+                                        <div class="usePoint">
+                                            0P
                                         </div>
+                                        <input name="usePoint" type="hidden" value="0">
+                                    </div>
+									<c:set var="memberRate" value="<%=rate%>"/>
+                                    <div class="price">
+                                        <div>적립예정 포인트</div>
+                                        <div class="addPoint">
+                                            <fmt:formatNumber value="${total * memberRate}"
+                                                pattern="#,###" />원
+                                        </div>
+                                        <input name="addPoint" type="hidden" value="0">
                                     </div>
 
                                     <div class="price">
@@ -218,7 +235,7 @@
                                                 pattern="#,###" />
                                         </strong>원</div>
                                 </div>
-                                <input type="submit" value="결제하기">
+                                <button type="button" onclick="requestPay()">결제하기</button>
                             </div>
                         </section>
 
@@ -229,12 +246,35 @@
                 </div>
 
         </div>
-
+        <input type="hidden" name="payment" value="">
 
     </form>
         <%@include file="/views/common/footer.jsp" %>
             <!-- 푸터부분 파일 가져오기-->
             </div>
+            <script>
+                const point = <%=cartMember.getPoint()%>;
+                const totalPrice = ${total};
+                const deliveryFee = ${deliveryFee};
+
+                let prodName = "${cartList.get(0).name}";
+
+                const cnt = ${cartList.size()};
+                if(cnt > 1){
+                    prodName += ' 외 ' +(cnt-1) +'건'
+                }
+
+                const name = "<%=cartMember.getName()%>";
+                const email = "<%=cartMember.getEmail()%>";
+                const phone = "<%=cartMember.getPhone()%>";
+                const addr = "<%=cartMember.getAddr()%>";
+            </script>
+                 <!-- jQuery -->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+  <!-- iamport.payment.js -->
+  <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
+    <script src="../resources/js/order/orderInfo.js"></script>
+
 </body>
 
 </html>

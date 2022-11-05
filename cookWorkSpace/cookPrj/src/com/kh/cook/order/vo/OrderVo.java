@@ -7,7 +7,8 @@ public class OrderVo {
 	}
 	
 	public OrderVo(String no, String memberNo, String point, String usePoint, String sum, String name, String addr,
-			String phone) {
+			String phone, String cancelYN) {
+		super();
 		this.no = no;
 		this.memberNo = memberNo;
 		this.point = point;
@@ -16,6 +17,7 @@ public class OrderVo {
 		this.name = name;
 		this.addr = addr;
 		this.phone = phone;
+		this.cancelYN = cancelYN;
 	}
 
 	private String no;
@@ -26,6 +28,7 @@ public class OrderVo {
 	private String name;
 	private String addr;
 	private String phone;
+	private String cancelYN;
 	
 	public String getNo() {
 		return no;
@@ -106,10 +109,19 @@ public class OrderVo {
 		this.phone = phone;
 	}
 
+	public String getCancelYN() {
+		return cancelYN;
+	}
+
+	public void setCancelYN(String cancelYN) {
+		this.cancelYN = cancelYN;
+	}
+
 	@Override
 	public String toString() {
-		return "orderVo [no=" + no + ", memberNo=" + memberNo + ", point=" + point + ", usePoint=" + usePoint + ", sum="
-				+ sum + ", name=" + name + ", addr=" + addr + ", phone=" + phone + "]";
+		return "OrderVo [no=" + no + ", memberNo=" + memberNo + ", point=" + point + ", usePoint=" + usePoint + ", sum="
+				+ sum + ", name=" + name + ", addr=" + addr + ", phone=" + phone + ", cancelYN=" + cancelYN + "]";
 	}
+
 	
 }

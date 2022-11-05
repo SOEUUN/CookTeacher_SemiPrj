@@ -13,11 +13,12 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>cookTeacher</title>
+    <title>집밥쿡선생 :: 장바구니</title>
     <!-- 경로 체크 필수 -->
     <link rel="stylesheet" href="/cookTeacher/resources/css/header.css">
     <link rel="stylesheet" href="/cookTeacher/resources/css/footer.css">
     <link rel="stylesheet" href="../resources/css/cart/list.css">
+    <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-round.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 </head>
 
@@ -45,19 +46,22 @@
                             </div>
                             
                             <form id="product-area" onsubmit="cookOrder()" action="/cookTeacher/order/info" method="post">
-                                <ul>
+                                <div class="empty">
                                     <c:if test="${empty cartList}">
-                                        <div class="none-cart">
-                                            <p>장바구니에 담긴 상품이 없습니다.</p></div>
-                                    </c:if>
+                                            <div class="none-cart">
+                                                <p>장바구니에 담긴 상품이 없습니다.</p></div>
+                                        </c:if>
+                                </div>
+                                <ul>
+                                    
                                     <c:forEach items="${cartList}" var="cartItem">
                                     <li class="product">
                                         <input type="checkbox" name="check" value="${cartItem.prodNo}" onchange="cookCheckOne()">
                                         <div class="thumb">
-                                            <img src="<c:url value="/resources/img/product/"></c:url>${cartItem.imgPath}" alt="${cartItem.name}">
+                                            <img src="<c:url value="/upload/img/"></c:url>${cartItem.imgPath}" alt="${cartItem.name}">
                                         </div>
                                         <div class="product-name">
-                                            <a href="#">${cartItem.name}</a>
+                                            <a href="<c:url value="/product/detail/productDetail?no=${cartItem.prodNo}"/>" alt="${cartItem.name}">${cartItem.name}</a>
                                         </div>
                                         <div class="count-wrapper">
                                             <button type="button" class="minus" onclick="changeCnt(${cartItem.prodNo}, -1)"></button>
@@ -116,7 +120,6 @@
         </div>
 <script src="../resources/js/cart/list.js"></script>
 <script>
-
 </script>        
 </body>
 

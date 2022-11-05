@@ -1,6 +1,8 @@
 package com.kh.cook.cart.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -25,29 +27,41 @@ public class AddCartController extends HttpServlet{
 		
 		// 회원이 아니면 로그인 페이지로 이동
 		if(loginMember == null) {
-			resp.sendRedirect("/member/login");
+			resp.sendRedirect("/cookTeacher/member/login");
 			return;
 		}
 		
 		// 입력된 식재료를 가져오기
-		String prodNo = req.getParameter("prodNo");
-		String cnt = req.getParameter("cnt");
+		String prodNo[] = req.getParameterValues("prodNo");
+    	String cnt[]  = req.getParameterValues("cnt");
 		String memberNo = loginMember.getNo();
 		
-		// 데이터 뭉치기
-		CartVo vo = new CartVo();
-		vo.setProdNo(prodNo);
-		vo.setNo(memberNo);
-		vo.setCnt(cnt);
+		// vo에 담아서
+		List<CartVo> list = new ArrayList<CartVo>();
 
-		// 서비스 다녀오기
-		int result = new CartService().addCart(vo);
+    	for(int i=0; i< prodNo.length; i++) {
+    		CartVo vo = new CartVo();
+    		vo.setProdNo(prodNo[i]);
+    		vo.setCnt(cnt[i]);
+    		vo.setNo(memberNo);
+    		
+    		// 리스트에 넣어주기
+    		list.add(vo);
+    	}
+
+		// 장바구니 서비스 다녀오기
+		int result = new CartService().addCart(list);
 
 		// 화면 보여주기
+		// 성공이면
 		if(result == 1) {
+			// 장바구니 페이지로 이동
 			req.setAttribute("cartMsg", true);
+			resp.sendRedirect("/cookTeacher/cart/list");
 		}else {
+			// 실패면 에러페이지로 이동
 			req.setAttribute("errorMsg", "잠시 후 다시 이용해주세요");
+			req.getRequestDispatcher("/views/common/errorPage.jsp").forward(req, resp);
 		}
 
 	}
